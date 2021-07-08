@@ -1,8 +1,9 @@
 import React, { useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Stars } from "@react-three/drei";
+import { OrbitControls, FlyControls, Stars } from "@react-three/drei";
 import { Physics, usePlane, useBox } from "@react-three/cannon";
 import Star from "./components/Star.js";
+import Ship from "./components/Ship.js";
 import "./styles.css";
 
 function Box() {
@@ -37,12 +38,13 @@ export default function App() {
   return (
     <Canvas>
       <OrbitControls />
+      <FlyControls />
       <Stars />
       <ambientLight intensity={0.5} />
       <spotLight position={[10, 15, 10]} angle={0.3} />
       <Physics>
         <Star radius={4} position={[0, 0, 8]} color="purple" />
-        <Box />
+        <Ship />
         <Plane />
       </Physics>
     </Canvas>
