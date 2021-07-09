@@ -1,4 +1,5 @@
 import React from "react";
+import { FlyControls, Stars } from "@react-three/drei";
 import { Physics, usePlane, useBox } from "@react-three/cannon";
 
 export default function Ship() {
