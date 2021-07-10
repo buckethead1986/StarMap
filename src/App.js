@@ -1,6 +1,11 @@
 import React, { useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, FlyControls, Stars } from "@react-three/drei";
+import {
+  OrbitControls,
+  FlyControls,
+  PerspectiveCamera,
+  Stars
+} from "@react-three/drei";
 import { Physics, usePlane, useBox } from "@react-three/cannon";
 import Star from "./components/Star.js";
 import Ship from "./components/Ship.js";
