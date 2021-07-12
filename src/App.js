@@ -42,8 +42,7 @@ function Plane() {
 export default function App() {
   return (
     <Canvas>
-      <OrbitControls />
-      <FlyControls />
+      <FlyControls movementSpeed={5} rollSpeed={0.1} />
       <Stars />
       <ambientLight intensity={0.5} />
       <spotLight position={[10, 15, 10]} angle={0.3} />
