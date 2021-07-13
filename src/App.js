@@ -6,7 +6,7 @@ import {
   PerspectiveCamera,
   Stars
 } from "@react-three/drei";
-import { Physics, usePlane, useBox } from "@react-three/cannon";
+import { Physics, usePlane, useBox, useSphere } from "@react-three/cannon";
 import Star from "./components/Star.js";
 import Ship from "./components/Ship.js";
 import "./styles.css";
@@ -39,15 +39,41 @@ function Plane() {
   );
 }
 
+function Sphere(radius, position, color) {
+  const [ref, api] = useSphere(() => ({
+    position: [4, 4, 4],
+    args: [2, 16, 16]
+  }));
+  console.log("sphere", radius, position);
+  return (
+    <mesh position={[4, 4, 4]}>
+      <sphereGeometry attach="geometry" args={[2, 16, 16]} />
+      <meshLambertMaterial attach="material" color={"red"} />
+    </mesh>
+  );
+}
+
+function flyToStar(position) {
+  console.log("hey", position);
+}
+
 export default function App() {
   return (
     <Canvas>
-      <FlyControls movementSpeed={5} rollSpeed={0.1} />
+      <FlyControls movementSpeed={5} rollSpeed={0.1} dragToLook={true} />
       <Stars />
       <ambientLight intensity={0.5} />
       <spotLight position={[10, 15, 10]} angle={0.3} />
       <Physics>
-        <Star radius={4} position={[0, 0, 8]} color="purple" />
+        <Star
+          onClick={console.log("hi")}
+          radius={4}
+          position={[0, 0, 8]}
+          color="purple"
+        />
+        <Star radius={2} position={[12, 4, 24]} color="green" />
+        <Sphere radius={2} position={[4, 4, 4]} color="red" />
+
         <Ship />
         <Plane />
       </Physics>
